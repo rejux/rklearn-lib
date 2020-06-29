@@ -1,0 +1,29 @@
++ epochs = 500
+	lr = 0.001 => no convergence = divergence
+	acc = 0
+
+	lr = 0.0001 => convergence around 200 
+	acc = 0,5
+
+	lr = 0.00001 => slow convergence after 500
+	acc = 0,5
+
++ epoch = 600
+	lr = 0.00001 => idem
+
+
++ epoch = 1000
+	lr = 0.00001 => idem
+
+
+Conclusion
+==========
+
+The right values seems to be : 
++ lr = 0.0001  <<<<
+[+ epochs = 200+ ]
+
+
+
+
+

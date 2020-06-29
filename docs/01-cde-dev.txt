@@ -1,0 +1,173 @@
+The Containerized Dev Env (CDE) For this Project
+================================================
+
+1. Introduction
+===============
+
+Provide a guide for instantiating a CDE for the project.
+
+2. Requirements
+===============
+
+	2.1. The Scripts
+	================
+
+Get the following scripts templates and put them into a scripts/ subdirectory:
+
+	scripts
+	├── backup-rklearn-lib-cde.sh
+	├── git-config.sh
+	├── run-bg-rklearn-lib-cde.sh
+	├── run-fg-rklearn-lib-cde.sh
+	└── run-jupyter-nb.sh
+
+	2.2. The Base CDE
+	=================
+
+This project is a Pyhton based ML project; then it should use the rejux/vim-ml-dev-lab-cpu image available on Dockerhub at https://hub.docker.com/repository/docker/rejux/vim-ml-dev-lab-cpu.
+
+Pull it:
+
+# docker pull rejux/vim-ml-dev-lab-cpu:1.0.0
+
+3. Create The CDE: [rejux/]rklearn-lib-gpu:1.0.0
+=================================================
+
+This section is useful if it is the first time you work on this project and you need to create the CDE.
+If it is not the case, you can safely skip this part and jump to the next section.
+
+Tag the base CDE for the project. It is equivalent to clone it:
+
+# docker tag vim-ml-dev-lab-gpu:1.0.0 rklearn-lib-gpu:1.0.0
+
+Check if the target container is GPU compatible:
+
+$ docker run --runtime=nvidia -it --rm rklearn-lib-gpu:1.0.0 nvidia-smi
+
+Check the real version of the CUDA Toolkit:
+
+# docker run --runtime=nvidia -it --rm rklearn-lib-gpu:1.0.0 nvcc -V
+
+
+
+4. Use The CDE: rejux/rklearn-lib:1.0.0
+=======================================
+
+	4.1. The 1st Time
+	=================
+
+Hyp: The rklean-lib docker image DOES NOT EXIST!
+
+TODO
+
+
+	4.2. BAU
+	========
+
+Hyp: The rklean-lib docker image EXISTS!
+
+In that situation the BAU can (also) be one of the following cases:
+
+a) You are a new contributeur and want to start coding on the project, or
+b) You just changed your PC and want to continue working on the project
+...
+
+# cd scripts/
+# ./run-bg-rklearn-lib-cde.sh
+...
+[INFO] The container is correctly started in daemon mode:
+...
+[INFO] Access to the container through a terminal using the command:
+[INFO] $ sudo docker exec -it rklearn-lib /bin/bash
+...
+
+Do what the script says and you are now in!
+
+Execute some quick tests to check that all is ok with the dev tools:
+
+(base) $ mkdir -p rklearn/tests/logs
+(base) $ source ~/venvs/rklearn-lib/bin/activate 
+$(rklearn-lib) (base) $ python rklearn/tests/test_rklearn_perceptron.py --conf=rklearn/tests/config/config.yaml
+
+
+
+
+
+
+
+
+
+
+
+5. Push The CDE on Docker Hub
+=============================
+
+This part is optional. However it is a good idea todo that in order to be able to work on several machine and share the image with other developers.
+
+6. Miscellaneous
+================
+
+	6.1. Loading The CDE From The Backup
+	====================================
+
+Maybe in some situations, it is easier to directly load the backup image of the project (e.g. remember you have a backup script for saving regularly the image).
+Indeed, pulling the image from the hub maybe long.
+In that case, just go the target machine, and execute:
+
+# cd <where compressed image is>
+# docker load < image.x.y.z.tar.gz
+
+Check in the local repo:
+
+# docker images
+REPOSITORY                                     TAG                  IMAGE ID            CREATED             SIZE
+rklearn-lib                                    1.0.1                d421c7950ac1        2 weeks ago         8.17GB
+...
+
+
+
+
+    6.x. Installing Supplemental Packages
+    =====================================
+
+* Install the nerd fonts (https://gist.github.com/matthewjberger/7dd7e079f282f8138a9dc3b045ebefa0)
+
+  1) Download a Nerd Font
+  2) Unzip and copy to ~/.fonts
+  3) Run the command fc-cache -fv to manually rebuild the font cache
+
+* Install all the nerds fonts: (https://github.com/SpaceVim/SpaceVim/issues/596)
+  => icearith comment
+
+
+
+
+
+
+Or using the Source Code Pro Fonts (the SpaceVim default): 
+
+$ mkdir -p ~/.fonts 
+$ cd ~/.fonts 
+$ wget -c https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/SourceCodePro.zip 
+$ unzip SourceCodePro.zip 
+
+Update the  ~/.SpaceVim.d/init.toml: 
+
+    # font 
+    guifont = "SourceCodePro Nerd Font Mono:h11"
+
+$ fc-cache -fv
+...
+
+
+
+* SpaceVim (https://spacevim.org/quick-start-guide/, https://spacevim.org/use-vim-as-a-python-ide/)
+  => disable the relative numbering : https://github.com/SpaceVim/SpaceVim/issues/1869 
+
+* The rktools lib: 
+  => pip install --upgrade rktools-1.0.0-py2.py3-none-any.whl 
+
+
+
+
+

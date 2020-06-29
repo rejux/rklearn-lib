@@ -1,0 +1,28 @@
+# Include READMEs...
+include *.rst
+include *.txt
+include *.md
+
+# Include the license file
+include LICENSE
+
+# Include recursives
+recursive-include docs *
+
+# rklearn package subdirs
+# recursive-include rklearn/data *
+
+# rklearn.tests subpackage
+recursive-include rklearn/tests *
+
+# rklearn.perceptron package subdirs
+# N/A
+
+# Exclude recusives
+# Note: this ones didn't work with global-exclude
+recursive-exclude **/.ipynb_checkpoints *
+recursive-exclude **/__pycache__ *
+
+# Exclude
+global-exclude *.py[cod] *.so
+

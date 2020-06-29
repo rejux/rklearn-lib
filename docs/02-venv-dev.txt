@@ -1,0 +1,63 @@
+For Developers
+==============
+
+The 1st Time
+============
+
+Confer docs/01-cde-dev.txt.
+
+The Venv
+========
+
+If it is the 1st time, then you need to create the dir to host the venvs and the venv itself:
+
+(base) $ python -m venv ~/venvs/rklearn-lib
+(base) $ source ~/venvs/rklearn-lib/bin/activate 
+(rklearn-lib) (base) $ 
+
+
+[OPTIONAL] upgrade pip:
+(rklearn-lib) (base) $ pip install --upgrade pip
+
+Install the requirements: 
+(rklearn-lib) (base) $ pip install -r requirements.txt
+
+    Troubleshoot
+    ============
+
+    If ERROR: No matching distribution found for mkl-fft==1.0.15 (from -r requirements.txt (line 5))
+    Then
+        - edit the requirements.txt and comment all the lines "mkl-...==..."
+
+    Test if your CUDA layer is compatible with your TF version:
+
+    $ python
+    >>> import tensorflow as tf
+    ...
+    ...
+    >>> sess = tf.Session()             // or >>> sess = tf.compat.v1.Session() 
+    ...
+    Found device 0 with properties:
+      name: GeForce RTX 2070 SUPER major: 7 minor: 5 memoryClockRate(GHz): 1.77
+    ... 
+    Found device 1 with properties:
+      name: GeForce RTX 2070 SUPER major: 7 minor: 5 memoryClockRate(GHz): 1.77
+    
+    ... Successfully opened dynamic library libcudart.so.10.0 
+    ... 
+
+
+Now, everything is ok!
+
+Business As Usual (BAU)
+=======================
+
+After a session with the container, always generate the requirements.txt file and commit the container:
+
+(rklearn-lib)...$ pip freeze >requirements.txt
+
+END OF DOCUMENT.
+
+
+
+

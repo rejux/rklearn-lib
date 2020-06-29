@@ -1,0 +1,21 @@
+
+* 2020/04/04 For all models, fit() returns an history object
+    Like Scikit Learn, we can provide an history object to the caller of the fit method.
+    It will wontain:
+        - the errors for all epochs - if it is meaningful like in the Perceptron algorithm
+        - the training costs for all epochs - the Adaline alogirthm
+        - the validation costs 
+        -...
+
+* 2020/04/04 For all models, provide  save(), load() methods
+    Define an export format and save the weights and all other useful information needed to restore the model 
+    and directly perform a predict(). For this, the code is necessary as the Bottleneck feature technique of 
+    deep NN.
+
+
+* 2020/04/24 Add the folowing pretty printers (e.g. plotters.py)
+    - a function to display a grid of mnist digits (textual version): mnist_digit_pretty_printer_grid(nb_lines, nb_cols,...)
+
+
+
+

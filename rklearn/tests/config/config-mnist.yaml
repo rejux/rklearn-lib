@@ -1,0 +1,36 @@
+#######################
+## config-mnist.yaml ##
+#######################
+
+logger:
+    log_file: /tmp/test_mnist_rklearn.log
+    log_level: debug
+    log_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    log_maxBytes: 1048576 # = 1MB = 1024*1024
+    log_backupCount: 50 
+
+mnist_data:
+    data_home: /home/developer/workspace/rklearn-lib/rklearn/tests/data/MNIST   # be sure to create it!
+    samples_dir: /home/developer/workspace/rklearn-lib/rklearn/tests/data/MNIST/samples  
+    plots_dir: /home/developer/workspace/rklearn-lib/rklearn/tests/plots/MNIST              # be sure to create it!
+    pos_class: 5 
+
+perceptron_hyper:
+    lr: 0.1
+    n_epochs: 20 
+    train_error_fig: /home/developer/workspace/rklearn-lib/rklearn/tests/plots/MNIST/mnist-perceptron-train-error-fig-{}.png
+    k_fold_cv: 5
+
+adalineGD_hyper:
+    lr: 0.0001 
+    n_epochs: 15
+    train_cost_fig: /home/developer/workspace/rklearn-lib/rklearn/tests/plots/MNIST/mnist-adalineGD-train-cost-fig-{}.png
+    k_fold_cv: 5
+
+adalineSGD_hyper:
+    lr: 0.01 
+    n_epochs: 15
+    train_cost_fig: /home/developer/workspace/rklearn-lib/rklearn/tests/plots/MNIST/mnist-adalineSGD-train-cost-fig-{}.png
+    k_fold_cv: 5
+
+

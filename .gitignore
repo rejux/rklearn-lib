@@ -1,0 +1,64 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+
+*~
+*.sw[mnpcod]
+*.log
+*.tmp
+*.tmp.*
+log.txt
+*.sublime-project
+*.sublime-workspace
+
+.vscode/
+npm-debug.log*
+.firebase/
+.idea/
+.sourcemaps/
+.sass-cache/
+.tmp/
+.versions/
+coverage/
+dist/
+node_modules/
+tmp/
+temp/
+hooks/
+platforms/
+plugins/
+plugins/android.json
+plugins/ios.json
+$RECYCLE.BIN/
+
+swap/
+rklearn/tests/data/
+
+# the generated images for docs
+
+docs/*.png
+
+# Plots
+
+plots/
+
+.DS_Store
+Thumbs.db
+UserInterfaceState.xcuserstate
+
+# Jupyter notebook
+
+.ipynb_checkpoints
+**/*/.ipynb_checkpoints
+
+*.egg-info*/
+**/*/*.egg-info*/
+
+__pycache__/
+**/*/__pycache__/
+
+# The tests logs
+
+rklearn/tests/logs/
+
+

@@ -1,0 +1,104 @@
+MNIST Classification Using the rklearn-lib
+==========================================
+
+1. Binary Classification Using rklearn.perceptron.Perceptron classifier
+=======================================================================
+
+Principle: TODO
+
+Program: test_rklearn_perceptron_binary_mnist.py
+Results: 
+
+...
+... - ... - INFO - ===================================
+... - ... - INFO - Fitting the rklearn perceptron
+... - ... - INFO - ===================================
+... - ... - INFO - 
+... - ... - INFO - Hyperparameters:
+... - ... - INFO - 	lr = 0.1
+... - ... - INFO - nb epochs = 20
+... - ... - INFO - Fit done in 12.323081493377686 seconds
+... - ... - INFO - Training errors for all epochs = [55972, 56000, 55975, 55972, 55929, 55950, 55996, 55936, 55947, 55946, 55965, 55966, 56000, 55972, 55956, 55995, 56013, 55953, 55949, 55929]
+... - ... - INFO - Plotted trainig errors in ~/workspace/rklearn-lib/rklearn/tests/plots/MNIST/mnist-perceptron-train-error-fig-perceptron-lr-0.1-epochs-20.png
+... 
+
+Interpretation: 
+
+The Perceptron is not power enough to correctly classifiy the MNIST binary. One can see that regarding the training errors that are very high and never 
+converge towards 0...
+
+It is later confirmed by the classification accuracy:
+
+ - ... - INFO - ===========================
+ - ... - INFO - Accuracy
+ - ... - INFO - ===========================
+ - ... - INFO - 
+ - ... - INFO - Misclassified examples: 9258 on 10000 samples 
+ - ... - INFO - Classification Accuracy: 0.074
+ - ... - INFO - Total duration = 44.0676052570343 secs.
+
+
+1. Binary Classification Using rklearn.perceptron.AdalineGD classifier
+=======================================================================
+
+Fist try: test_rklearn_adaline_binary_mnist.py
+
+Hyperparameters: 
+- lr = 1e-2 (0.01) 
+- n_epochs = 10 
+
+Results: 
+
+...
+INFO - Training costs (the 10 latest values) for all epochs = ...[2662.167679813514, 4193382142.581252, 1.508183211318123e+18, 8.338781164208074e+26, 4.627015888109124e+35, 2.5675108361929365e+44, 1.4247009100107385e+53, 7.905605149944664e+61, 4.386786893284198e+70, 2.4342095111127456e+79]
+...
+
+- test_mnist_adalineXXX - INFO - ===========================
+- test_mnist_adalineXXX - INFO - Accuracy
+- test_mnist_adalineXXX - INFO - ===========================
+- test_mnist_adalineXXX - INFO - 
+- test_mnist_adalineXXX - INFO - Misclassified examples: 10000 on 10000 samples 
+- test_mnist_adalineXXX - INFO - Classification Accuracy: 0.000
+- test_mnist_adalineXXX - INFO - Total duration = 12.346081972122192 secs.
+
+Interpretation: 
+
+We know this algorithm is "better" than the Perceptron. The problem is certainly related to the learnin rate (lr).
+
+  1.1. GridSearch on the Learning Rate
+  ====================================
+
+Program = 
+
+
+Config = 
+
+
+
+
+Results = 
+
+
+
+
+
+
+
+
+
+
+Going Further
+=============
+
+Normalization, Standardization...
+* See https://machinelearningmastery.com/how-to-normalize-center-and-standardize-images-with-the-imagedatagenerator-in-keras/
+
+        # TODO pipipeline this series of transfo
+
+        # TODO explore other normalization techniques
+        # scaler = StandardScaler(with_mean=False)
+        # X_prep = scaler.fit_transform(X_train)
+        # y_prep = y_train
+
+
+

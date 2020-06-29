@@ -1,0 +1,22 @@
+The CIFAR-10 Dataset
+====================
+
+1. Download Data
+================
+
+Top link = https://www.cs.toronto.edu/~kriz/cifar.html 
+
+
+$ mkdir -p rklearn/tests/data/CIFAR 
+$ cd rklearn/tests/data/CIFAR 
+
+
+Download the Python version of the dataset: 
+
+$ wget -c https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
+... // 161MB 
+
+
+
+
+

@@ -1,0 +1,50 @@
+Create & Manage the Package
+===========================
+
+
+Prerequisites
+=============
+
+Install latest version of wheel and setuptools:
+(rklearn-lib) $ pip install --upgrade setuptools wheel
+
+
+1. Install locally for Dev
+==========================
+
+(base) (rklearn-lib) $ pip install --upgrade -e .
+
+or                                                                                                                                   
+
+(base) (rklearn-lib) $ python setup.py develop --upgrade
+
+Check: 
+
+(...) $ pip show rklearn 
+...
+
+2. Generate the Wheels and Bundles
+==================================
+
+Check a last time the files: MANIFEST.in, setup.*, ...
+
+(...) $ python setup.py sdist bdist_wheel
+
+Note: You can omit the sdist if you want only the wheels.
+
+$ tree dist/
+dist/
+├── rklearn-1.0.0-py2.py3-none-any.whl
+└── rklearn-1.0.0.tar.gz
+
+3. Install The Wheel
+====================
+
+(...) $ pip install --upgrade [--user] <WHEEL>
+
+Note: If you live in a virtual env, then the --user is not mandatory.
+
+
+
+END OF DOCUMENT.
+

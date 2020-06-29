@@ -1,0 +1,48 @@
+##########################
+## config-cifar-10.yaml ##
+##########################
+
+logger:
+    log_file: /tmp/test_cifar10_rklearn.log
+    log_level: debug
+    log_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    log_maxBytes: 1048576 # = 1MB = 1024*1024
+    log_backupCount: 50 
+
+data:
+
+  # mandatory fields
+  data_home: /home/developer/workspace/rklearn-lib/rklearn/tests/data/CIFAR/cifar-10-batches-py 
+  batch_size: 10
+
+  # use case specific fields
+  train_data_batch_prefix: "data_batch_"
+  train_data_nb_files: 5
+  test_data_batch_prefix: "test_batch"
+  image_size: 32
+  num_channels: 3
+  num_categories: 10
+
+  # for dev. in percentage. 0.1 = 10% of the whole dataset (both train and test if needed) 
+  # if prod, put it to -1 
+  dev_sample: -1 # 0.1  
+
+cifar10_cnn:
+
+  keep_prob: 0.6
+  num_epochs: 20 # 200
+  num_filters: 32
+  filter_size: 5
+  learning_rate: 0.0005 # 5 * 1e-04
+
+  # the number of nodes in the 1st fully connected (FC) layer
+  fc1_nb_units: 512
+
+  # model checkpoints
+  checkpoint_dir: /home/developer/workspace/rklearn-lib/models/cifar10cnn/checkpoints  
+  max_to_keep: 5
+
+  # model saving dir (e.g. protocol buffer data)
+  model_dir: /home/developer/workspace/rklearn-lib/models/cifar10cnn/full
+
+

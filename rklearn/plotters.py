@@ -2,19 +2,12 @@
 ## plotters.py ##
 #################
 
-#############
-## Imports ##
-#############
-
-# import numpy as np
-# import matplotlib
-
-from decimal import Decimal
 import matplotlib.pyplot as plt
 import numpy as np
 
+from decimal import Decimal
 from sklearn.metrics import mean_squared_error
-from sklearn.model_selection import learning_curve 
+from sklearn.model_selection import learning_curve
 
 ###################################
 ## mnist_digit_pretty_printer()  ##
@@ -46,13 +39,11 @@ def mnist_digit_pretty_printer(digit, white=" ", gray="+"):
     return text
 
 
-
 ###########################
 ## plot_2D_binary_data() ##
 ###########################
 
-# def plot_2D_binary_data(x1, y1, x2, y2, label1 = "setosa", label2 = "versicolor"):
-def plot_2D_binary_data(x1, y1, x2, y2, label1 = "class1", label2 = "class2"):
+def plot_2D_binary_data(x1, y1, x2, y2, label1="class1", label2="class2"):
     """
     Plot the 2 classes in the 2D feature subspace: 1 feature per dimension.
     Useful to visually check that classes are lineary seperable.
@@ -110,30 +101,33 @@ def plot_simple_sequence(y_values, xlabel="xlabel", ylabel="ylabel", title="No t
 
     return plt
 
-#####################################
-## plot_learning_curves_cv_score() ##
-#####################################
 
-# tribute: A. Géron / Hands-On Machine Learning With Scikit-Learn and Tensorflow
-# tribute: Scikit-learn https://scikit-learn.org/stable/auto_examples/model_selection/plot_learning_curve.html 
+####################################
+# plot_learning_curves_cv_score()  #
+####################################
 
-def plot_learning_curves_cv_scores(estimator, 
-                         X, y,  
-                         title = "Learning curves", 
-                         ylim = None, 
-                         cv = None,
-                         n_jobs = 4,
-                        fit_times_vs_data = True,
-                        scores_vs_fit_times = True,
-                         logger = None):
+# tributes:
+# + A. Géron / Hands-On Machine Learning With Scikit-Learn and Tensorflow
+# + Scikit-learn https://scikit-learn.org/stable/auto_examples/model_selection/plot_learning_curve.html
+
+def plot_learning_curves_cv_scores(estimator,
+                                   X, y,
+                                   title="Learning curves",
+                                   ylim=None,
+                                   cv=None,
+                                   n_jobs=4,
+                                   fit_times_vs_data=True,
+                                   scores_vs_fit_times=True,
+                                   logger=None):
     """
     Plot the learning curves of a given estimator using the Scikit Learn accuracy_score metric.
 
     Parameters:
+    -----------
         estimator: xxxx
-            a estimator compliant to the Scikit Learn BaseEstimator interface (e.g. fit, transform...)
-        X, y: features and labels matrices
-            xxxx
+            An estimator compliant to the Scikit Learn BaseEstimator interface (e.g. fit, transform...)
+        X, y: features matrix, labels vector
+            They must be compliant to Numpy array type.
         cv: xxxxx
             xxxxx
 
@@ -158,7 +152,7 @@ def plot_learning_curves_cv_scores(estimator,
 
     # using the Scikit-learn API
     # train_sizes = [int(s) for s in np.linspace(1, X.shape[0], X.shape[0])] # absolute sizes
-    train_sizes = np.linspace(.1, 1.0, 10) # N = 10 relative sizes or ratios 
+    train_sizes = np.linspace(.1, 1.0, 10)  # N = 10 relative sizes or ratios
     train_sizes, train_scores, test_scores, fit_times, _ = \
         learning_curve(estimator, X, y, cv=cv, n_jobs=n_jobs, train_sizes=train_sizes, return_times=True)
 
@@ -179,12 +173,12 @@ def plot_learning_curves_cv_scores(estimator,
     if fit_times_vs_data is True:
         if scores_vs_fit_times is True:
             _, axes = plt.subplots(3, 1, figsize=(8, 20))
-        else: 
+        else:
             _, axes = plt.subplots(2, 1, figsize=(8, 15))
     else:
-        if scores_vs_fit_times is True: 
+        if scores_vs_fit_times is True:
             _, axes = plt.subplots(2, 1, figsize=(8, 15))
-        else: 
+        else:
             _, axes = plt.subplots(1, 1, figsize=(8, 8))
 
     #
@@ -219,31 +213,30 @@ def plot_learning_curves_cv_scores(estimator,
         axes[1].set_title("Scalability of the model")
 
         # index of the next plot: scores = f(fit_times) 
-            
+
         if scores_vs_fit_times is True:
             index = 2
-        else: # => N/A
-            index = -1 
-    else: 
-        index = 1 
+        else:  # => N/A
+            index = -1
+    else:
+        index = 1
 
     if index > 0:
-
         axes[index].grid()
         axes[index].plot(fit_times_mean, test_scores_mean, 'o-')
-        axes[index].fill_between(fit_times_mean, test_scores_mean - test_scores_std, test_scores_mean + test_scores_std, alpha=0.1)
+        axes[index].fill_between(fit_times_mean, test_scores_mean - test_scores_std, test_scores_mean + test_scores_std,
+                                 alpha=0.1)
         axes[index].set_xlabel("fit_times")
         axes[index].set_ylabel("Score")
         axes[index].set_title("Performance of the model")
-    
-    return plt
 
+    return plt
 
 ####################################
 ## plot_learning_curves_cv_rmse() ##
 ####################################
 
-    # Custom code
+# Custom code
 
 #    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size = val_ratio)
 #
@@ -273,11 +266,3 @@ def plot_learning_curves_cv_scores(estimator,
 #     plt.title(title)
 #     plt.legend(loc="best")
 #     return plt
-
-
-
-
-
-
-
-

@@ -2,30 +2,30 @@
 ## config.yaml ##
 #################
 
+# For portability reasons, the file paths are always relative
+# to the tests/ subfolder. All tests should be started from here.
+
 logger:
     log_file: /tmp/test_rklearn.log
     log_level: debug
     log_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     log_maxBytes: 1048576 # = 1MB = 1024*1024
-    log_backupCount: 50 
+    log_backupCount: 50
 
 iris_binary_classifier:
-    cvs_file: "/home/developer/workspace/rklearn-lib/rklearn/tests/data/IRIS/iris.data"
+    cvs_file: "./data/IRIS/iris.data"
     features: [0,2]
     pos_class: "Iris-setosa"
     neg_class: "Iris-versicolor"
-    data_fig: "/home/developer/workspace/rklearn-lib/rklearn/tests/plots/IRIS/iris-data-fig-{}.png"  # holes should be filled using format()
+    data_fig: "./plots/IRIS/iris-data-fig-{}.png"  # holes should be filled using format()
 
 perceptron_hyper:
     lr: 0.1
-    n_epochs: 50
-    train_error_fig: "/home/developer/workspace/rklearn-lib/rklearn/tests/plots/IRIS/iris-perceptron-train-error-fig-{}.png"
-    learning_curves_fig: "/home/developer/workspace/rklearn-lib/rklearn/tests/plots/IRIS/iris-perceptron-learning-curves-fig-epochs-{}-lr-{}.png"
-    
+    n_epochs: 20
+    train_error_fig: "./plots/IRIS/iris-perceptron-train-error-fig-{}.png"
+    learning_curves_fig: "./plots/IRIS/iris-perceptron-learning-curves-fig-epochs-{}-lr-{}.png"
 
 adalineGD_hyper:
     lr: 0.0001
-    n_epochs: 200
-    train_cost_fig: "/home/developer/workspace/rklearn-lib/rklearn/tests/plots/IRIS/iris-adalineGD-train-cost-fig-{}.png"
-
-
+    n_epochs: 20
+    train_cost_fig: "./plots/IRIS/iris-adalineGD-train-cost-fig-{}.png"
